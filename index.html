@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,9 +14,9 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
-            background: #131A22;
+            background: #0f1117;  /* even deeper than before */
             color: #ffffff;
             cursor: default;
         }
@@ -23,17 +24,19 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* Navigation */
+        /* Navigation – glass style */
         nav {
-            background: #232F3E;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            background: rgba(35, 47, 62, 0.85);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 100;
+            border-bottom: 1px solid rgba(255, 153, 0, 0.2);
         }
 
         .nav-content {
@@ -44,9 +47,13 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FF9900, #FFD700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
@@ -59,82 +66,127 @@
             text-decoration: none;
             color: #ffffff;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #FF9900;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .nav-links a:hover {
             color: #FF9900;
         }
 
-        /* Hero Section */
+        /* Hero with subtle gradient animation */
         .hero {
+            position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: #232F3E;
-            color: white;
             text-align: center;
             padding-top: 80px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1f2e, #232F3E, #0f1117);
+            background-size: 200% 200%;
+            animation: gentleFlow 12s ease infinite;
+        }
+
+        @keyframes gentleFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-content-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
         }
 
         .hero-content h1 {
-            font-size: 3rem;
+            font-size: 3.5rem;
+            font-weight: 700;
             margin-bottom: 1rem;
+            letter-spacing: -1px;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #FF9900;
-            margin-bottom: 1rem;
-            transition: transform 0.3s;
+            margin-bottom: 1.5rem;
+            transition: transform 0.4s ease, box-shadow 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .profile-img:hover {
             transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(255,153,0,0.3);
         }
 
         .highlight {
-            color: #FF9900;
+            background: linear-gradient(120deg, #FF9900, #FFD700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .hero-content h2 {
             font-size: 2rem;
             margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .hero-content p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             color: #dddddd;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .btn {
             display: inline-block;
-            background: #FF9900;
+            background: linear-gradient(135deg, #FF9900, #FFB347);
             color: #131A22;
-            padding: 12px 30px;
+            padding: 14px 36px;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
             border: none;
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255,153,0,0.3);
         }
 
         .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            background: #ffad33;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,153,0,0.5);
+            background: linear-gradient(135deg, #FFB347, #FF9900);
         }
 
-        /* Sections */
+        /* Glassmorphism sections */
         section {
-            background: #232F3E;
-            margin: 20px 0;
-            border-radius: 20px;
+            background: rgba(35, 47, 62, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 153, 0, 0.15);
+            margin: 30px 0;
+            border-radius: 30px;
             padding: 60px 0;
             opacity: 0;
             transform: translateY(30px);
@@ -150,16 +202,20 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: #ffffff;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #FF9900);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        /* About Section */
+        /* About content */
         .about-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
             font-size: 1.1rem;
-            color: #dddddd;
+            color: #e0e0e0;
             line-height: 1.8;
         }
 
@@ -172,22 +228,32 @@
         }
 
         .project-card {
-            background: #37475A;
-            border-radius: 10px;
-            padding: 1.5rem;
+            background: rgba(55, 71, 90, 0.6);
+            backdrop-filter: blur(5px);
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
             text-align: center;
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 153, 0, 0.2);
         }
 
         .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            background: #3a5468;
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 40px rgba(0,0,0,0.4);
+            border-color: #FF9900;
+            background: rgba(55, 71, 90, 0.8);
+        }
+
+        .project-card i {
+            font-size: 2.5rem;
+            color: #FF9900;
+            margin-bottom: 1rem;
         }
 
         .project-card h3 {
             margin-bottom: 1rem;
             color: #FF9900;
+            font-size: 1.5rem;
         }
 
         .project-card p {
@@ -197,33 +263,36 @@
 
         .btn-small {
             display: inline-block;
-            background: #FF9900;
+            background: linear-gradient(135deg, #FF9900, #FFB347);
             color: #131A22;
             padding: 8px 20px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 40px;
             margin: 0 5px;
-            transition: background 0.3s;
+            font-weight: 500;
+            transition: all 0.2s;
             border: none;
             cursor: pointer;
         }
 
         .btn-small:hover {
-            background: #ffad33;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(255,153,0,0.4);
         }
 
-        /* Skills */
+        /* Skills with icons */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 1.5rem;
             padding: 0 20px;
         }
 
         .skill-item {
-            background: #37475A;
+            background: rgba(55, 71, 90, 0.6);
+            backdrop-filter: blur(4px);
             padding: 1rem;
-            border-radius: 8px;
+            border-radius: 60px;
             text-align: center;
             font-weight: 500;
             color: white;
@@ -232,26 +301,37 @@
             transform: scale(0.8);
             animation: popIn 0.5s forwards;
             cursor: pointer;
+            border: 1px solid rgba(255, 153, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .skill-item i {
+            font-size: 1.3rem;
+            color: #FF9900;
         }
 
         @keyframes popIn {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            to { opacity: 1; transform: scale(1); }
         }
 
-        .skill-item:nth-child(1) { animation-delay: 0.1s; }
-        .skill-item:nth-child(2) { animation-delay: 0.2s; }
-        .skill-item:nth-child(3) { animation-delay: 0.3s; }
-        .skill-item:nth-child(4) { animation-delay: 0.4s; }
-        .skill-item:nth-child(5) { animation-delay: 0.5s; }
-        .skill-item:nth-child(6) { animation-delay: 0.6s; }
+        .skill-item:nth-child(1) { animation-delay: 0.05s; }
+        .skill-item:nth-child(2) { animation-delay: 0.1s; }
+        .skill-item:nth-child(3) { animation-delay: 0.15s; }
+        .skill-item:nth-child(4) { animation-delay: 0.2s; }
+        .skill-item:nth-child(5) { animation-delay: 0.25s; }
+        .skill-item:nth-child(6) { animation-delay: 0.3s; }
 
         .skill-item:hover {
             background: #FF9900;
             color: #131A22;
             transform: translateY(-5px) scale(1.05);
+            border-color: #FF9900;
+        }
+        .skill-item:hover i {
+            color: #131A22;
         }
 
         /* Contact Form */
@@ -260,51 +340,59 @@
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 1.2rem;
             padding: 0 20px;
         }
 
         .contact-form input,
         .contact-form textarea {
-            padding: 12px;
-            border: 1px solid #37475A;
-            border-radius: 5px;
+            padding: 14px 18px;
+            border: 1px solid rgba(255, 153, 0, 0.3);
+            border-radius: 60px;
             font-family: inherit;
             font-size: 1rem;
-            background: #131A22;
+            background: rgba(19, 26, 34, 0.8);
             color: white;
+            transition: all 0.3s;
+        }
+
+        .contact-form textarea {
+            border-radius: 25px;
         }
 
         .contact-form input:focus,
         .contact-form textarea:focus {
             outline: none;
             border-color: #FF9900;
+            box-shadow: 0 0 10px rgba(255,153,0,0.3);
         }
 
         .contact-form input::placeholder,
         .contact-form textarea::placeholder {
-            color: #888;
+            color: #aaa;
         }
 
-        /* Footer */
         footer {
-            background: #131A22;
-            color: white;
+            background: #0a0c10;
             text-align: center;
             padding: 2rem;
-            border-radius: 20px;
+            border-radius: 30px;
             margin-top: 2rem;
+            border-top: 1px solid rgba(255, 153, 0, 0.2);
         }
 
         .social-links a {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
-            transition: color 0.3s;
+            margin: 0 15px;
+            font-size: 1.3rem;
+            transition: all 0.3s;
         }
 
         .social-links a:hover {
             color: #FF9900;
+            transform: translateY(-3px);
+            display: inline-block;
         }
 
         /* Particle canvas */
@@ -314,11 +402,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: -2;
             pointer-events: none;
         }
 
-        /* Back to Top button */
+        /* Back to Top */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -338,11 +426,11 @@
         }
 
         .back-to-top:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px) scale(1.05);
             background: #ffad33;
         }
 
-        /* Typewriter effect */
+        /* Typewriter */
         .typewriter {
             overflow: hidden;
             border-right: 3px solid #FF9900;
@@ -362,7 +450,7 @@
             50% { border-color: #FF9900; }
         }
 
-        /* Mobile responsive */
+        /* Mobile */
         @media (max-width: 768px) {
             .nav-content {
                 flex-direction: column;
@@ -372,7 +460,7 @@
                 font-size: 2rem;
             }
             .hero-content h2 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             .section-title {
                 font-size: 2rem;
@@ -382,9 +470,12 @@
                 border-right: none;
                 animation: none;
             }
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        /* Custom cursor glow */
+        /* Cursor glow */
         .cursor-glow {
             position: fixed;
             width: 30px;
@@ -396,11 +487,10 @@
             transition: width 0.2s, height 0.2s;
             z-index: 9999;
         }
-
         .cursor-glow.hover {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 153, 0, 0.2);
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 153, 0, 0.25);
         }
     </style>
 </head>
@@ -424,7 +514,7 @@
 </nav>
 
 <section id="home" class="hero">
-    <div class="container">
+    <div class="container hero-content-wrapper">
         <div class="hero-content">
             <img src="me.jpg" class="profile-img" alt="Paul Prosper">
             <h1>Hi, I'm <span class="highlight">Paul Prosper</span></h1>
@@ -448,21 +538,24 @@
         <h2 class="section-title">My Projects</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <h3>📘 Sample Project 1</h3>
+                <i class="fas fa-code"></i>
+                <h3>Sample Project 1</h3>
                 <p>Sample project – actual work coming after I complete my current learning phase.</p>
                 <div>
                     <a href="#" class="btn-small" style="background:#ccc; pointer-events:none;">Preview</a>
                 </div>
             </div>
             <div class="project-card">
-                <h3>📗 Sample Project 2</h3>
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Sample Project 2</h3>
                 <p>Sample project – actual work coming after I complete my current learning phase.</p>
                 <div>
                     <a href="#" class="btn-small" style="background:#ccc; pointer-events:none;">Preview</a>
                 </div>
             </div>
             <div class="project-card">
-                <h3>📙 Sample Project 3</h3>
+                <i class="fas fa-database"></i>
+                <h3>Sample Project 3</h3>
                 <p>Sample project – actual work coming after I complete my current learning phase.</p>
                 <div>
                     <a href="#" class="btn-small" style="background:#ccc; pointer-events:none;">Preview</a>
@@ -474,12 +567,12 @@
     <section id="skills">
         <h2 class="section-title">My Skills</h2>
         <div class="skills-grid">
-            <div class="skill-item">HTML5</div>
-            <div class="skill-item">CSS3</div>
-            <div class="skill-item">JavaScript</div>
-            <div class="skill-item">React</div>
-            <div class="skill-item">Git & GitHub</div>
-            <div class="skill-item">Responsive Design</div>
+            <div class="skill-item"><i class="fab fa-html5"></i> HTML5</div>
+            <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+            <div class="skill-item"><i class="fab fa-js"></i> JavaScript</div>
+            <div class="skill-item"><i class="fab fa-react"></i> React</div>
+            <div class="skill-item"><i class="fab fa-git-alt"></i> Git & GitHub</div>
+            <div class="skill-item"><i class="fas fa-mobile-alt"></i> Responsive Design</div>
         </div>
     </section>
 
@@ -499,9 +592,9 @@
     <div class="container">
         <p>&copy; 2026 Paul Prosper. All rights reserved.</p>
         <div class="social-links" style="margin-top:1rem;">
-            <a href="#">GitHub</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Twitter</a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
         </div>
     </div>
 </footer>
@@ -514,8 +607,7 @@
     function revealSections() {
         sections.forEach(section => {
             const sectionTop = section.getBoundingClientRect().top;
-            const windowHeight = window.innerHeight;
-            if (sectionTop < windowHeight - 100) {
+            if (sectionTop < window.innerHeight - 100) {
                 section.classList.add('visible');
             }
         });
@@ -523,7 +615,7 @@
     window.addEventListener('scroll', revealSections);
     revealSections();
 
-    // ========== SMOOTH SCROLLING ==========
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -532,7 +624,7 @@
         });
     });
 
-    // ========== TYPEWRITER EFFECT ==========
+    // Typewriter effect
     const typewriterEl = document.querySelector('.typewriter');
     const words = ['Front-End Developer', 'UI Enthusiast', 'Problem Solver'];
     let wordIndex = 0, charIndex = 0, isDeleting = false;
@@ -560,29 +652,26 @@
     }
     if (typewriterEl) typeEffect();
 
-    // ========== PARTICLE BACKGROUND ==========
+    // Particles background
     const canvas = document.getElementById('particleCanvas');
     if (canvas) {
         const ctx = canvas.getContext('2d');
         let particles = [];
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+        function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         function createParticles() {
             particles = [];
-            for (let i = 0; i < 70; i++) {
+            for (let i = 0; i < 60; i++) {
                 particles.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
                     radius: Math.random() * 3 + 1,
-                    speedX: (Math.random() - 0.5) * 0.5,
-                    speedY: (Math.random() - 0.5) * 0.3,
-                    color: `hsl(${Math.random() * 360}, 70%, 60%)`
+                    speedX: (Math.random() - 0.5) * 0.4,
+                    speedY: (Math.random() - 0.5) * 0.2,
+                    color: `rgba(255, 153, 0, ${Math.random() * 0.4 + 0.1})`
                 });
             }
         }
-        function drawParticles() {
+        function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
                 ctx.beginPath();
@@ -596,63 +685,53 @@
                 if (p.y < 0) p.y = canvas.height;
                 if (p.y > canvas.height) p.y = 0;
             });
-            requestAnimationFrame(drawParticles);
+            requestAnimationFrame(draw);
         }
-        window.addEventListener('resize', () => { resizeCanvas(); createParticles(); });
-        resizeCanvas();
-        createParticles();
-        drawParticles();
+        window.addEventListener('resize', () => { resize(); createParticles(); });
+        resize(); createParticles(); draw();
     }
 
-    // ========== BACK TO TOP BUTTON ==========
+    // Back to top
     const backBtn = document.getElementById('backToTop');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) backBtn.style.display = 'block';
-        else backBtn.style.display = 'none';
+        backBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
     });
-    backBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // ========== CUSTOM CURSOR GLOW ==========
-    const cursorGlow = document.createElement('div');
-    cursorGlow.className = 'cursor-glow';
-    document.body.appendChild(cursorGlow);
+    // Cursor glow
+    const glow = document.createElement('div');
+    glow.className = 'cursor-glow';
+    document.body.appendChild(glow);
     document.addEventListener('mousemove', (e) => {
-        cursorGlow.style.left = e.clientX + 'px';
-        cursorGlow.style.top = e.clientY + 'px';
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
     });
-    const interactiveElements = document.querySelectorAll('a, button, .btn, .btn-small, .project-card, .skill-item');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => cursorGlow.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursorGlow.classList.remove('hover'));
+    const interactives = document.querySelectorAll('a, button, .btn, .btn-small, .project-card, .skill-item');
+    interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => glow.classList.add('hover'));
+        el.addEventListener('mouseleave', () => glow.classList.remove('hover'));
     });
 
-    // ========== CONTACT FORM HANDLER ==========
-    const contactForm = document.getElementById('contact-form');
-    const formStatus = document.getElementById('form-status');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+    // Contact form (demo)
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    if (form) {
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
             if (!name || !email || !message) {
-                formStatus.textContent = 'Please fill in all fields';
-                formStatus.style.color = 'red';
+                status.textContent = '❌ Please fill in all fields';
+                status.style.color = '#FF9900';
                 return;
             }
-            formStatus.textContent = 'Sending...';
-            formStatus.style.color = '#FF9900';
-            setTimeout(() => {
-                formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
-                formStatus.style.color = 'green';
-                contactForm.reset();
-                setTimeout(() => formStatus.textContent = '', 5000);
-            }, 1000);
+            status.textContent = '✅ Message sent! (demo)';
+            status.style.color = '#00ffaa';
+            form.reset();
+            setTimeout(() => status.textContent = '', 3000);
         });
     }
 </script>
-
 </body>
 </html>
