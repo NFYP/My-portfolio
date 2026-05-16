@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; frame-src 'none'; object-src 'none';">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <meta charset="UTF-8">
@@ -663,14 +663,12 @@
         }
         if (!isDeleting && charIndex === currentWord.length) {
             isDeleting = true;
-            setTimeout(typeEffect, 2000);
-            return;
+            setTimeout(typeEffect, 2000); return;
         }
         if (isDeleting && charIndex === 0) {
             isDeleting = false;
             wordIndex = (wordIndex + 1) % words.length;
-            setTimeout(typeEffect, 500);
-            return;
+            setTimeout(typeEffect, 500);return;
         }
         setTimeout(typeEffect, isDeleting ? 100 : 150);
     }
@@ -743,8 +741,7 @@
 const honeypot = document.getElementById('honeypot').value;
 if (honeypot !== "") {
     formStatus.textContent = 'Spam detected. Submission rejected.';
-    formStatus.style.color = 'red';
-    return;
+    formStatus.style.color = 'red';return;
 }
     if (form) {
         form.addEventListener('submit', (e) => {
@@ -754,8 +751,7 @@ if (honeypot !== "") {
             const message = document.getElementById('message').value.trim();
             if (!name || !email || !message) {
                 status.textContent = '❌ Please fill in all fields';
-                status.style.color = '#FF9900';
-                return;}
+                status.style.color = '#FF9900';return;}
             status.textContent = '✅ Message sent! (demo)';
             status.style.color = '#00ffaa';
             form.reset();
